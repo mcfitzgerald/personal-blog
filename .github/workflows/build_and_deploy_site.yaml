@@ -15,7 +15,10 @@ jobs:
         node-version: '15'
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        service_account_key: ${{ secrets.GCE_SA_KEY }}
+        version: '290.0.1'
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
     - run: |
         npm ci
         gatsby build
