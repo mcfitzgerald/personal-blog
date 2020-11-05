@@ -20,6 +20,7 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
     - run: |
+        ls $GITHUB_WORKSPACE
         npm ci
         npm install -g gatsby-cli
         gatsby build
