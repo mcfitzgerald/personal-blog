@@ -15,14 +15,11 @@ jobs:
         node-version: '15'
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: '290.0.1'
-        project_id: ${{ secrets.GCP_PROJECT_ID }}
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
+        project_id: ${{ secrets.GCE_PROJECT }}
+        service_account_key: ${{ secrets.GCE_SA_KEY }}
     - run: |
         npm ci
         npm install -g gatsby-cli
         gatsby build
         ls $GITHUB_WORKSPACE
-        gcloud config set project ${{ secrets.GCE_PROJECT }}
         gsutil rsync -r $GITHUB_WORKSPACE/public ${{ secrets.GS_BUCKET }}
