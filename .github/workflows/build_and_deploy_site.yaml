@@ -21,6 +21,7 @@ jobs:
         export_default_credentials: true
     - run: |
         npm ci
+        npm install -g gatsby-cli
         gatsby build
         gcloud config set project ${{ secrets.GCE_PROJECT }}
         gsutil rsync -r $GITHUB_WORKSPACE/public ${{ secrets.GS_BUCKET }}
