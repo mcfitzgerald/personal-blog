@@ -13,12 +13,11 @@ jobs:
     - uses: actions/setup-node@v2-beta
       with:
         node-version: '15'
-    - name: install deps
-      run: npm ci
-      run: gatsby build
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
         service_account_key: ${{ secrets.GCE_SA_KEY }}
     - run: |
+        npm ci
+        gatsby build
         gcloud config set project ${{ secrets.GCE_PROJECT }}
-        gsutil rsync -r $GITHUB_WORKSPACE/_site ${{ secrets.GS_BUCKET }}
+        gsutil rsync -r $GITHUB_WORKSPACE/public ${{ secrets.GS_BUCKET }}
