@@ -22,4 +22,4 @@ jobs:
         npm install -g gatsby-cli
         gatsby build
         ls $GITHUB_WORKSPACE
-        gsutil rsync -r $GITHUB_WORKSPACE/public ${{ secrets.GS_BUCKET }}
+        gsutil rsync -r $GITHUB_WORKSPACE/public/ ${{ secrets.GS_BUCKET }}
