@@ -21,5 +21,4 @@ jobs:
         npm ci
         npm install -g gatsby-cli
         gatsby build
-        ls $GITHUB_WORKSPACE
         gsutil rsync -r $GITHUB_WORKSPACE/public/ gs://www.mcfitz.info/
